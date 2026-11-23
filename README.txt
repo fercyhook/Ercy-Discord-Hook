@@ -1,0 +1,3 @@
+############# EXECUTE THIS COMMAND IF YOU DON'T HAVE FFMPEG INSTALLED ############# 
+
+powershell -NoProfile -Command "Invoke-WebRequest 'https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip' -OutFile 'C:\ffmpeg.zip'; Expand-Archive 'C:\ffmpeg.zip' -DestinationPath 'C:\'; $ffmpegDir = Get-ChildItem -Directory 'C:\' | Where-Object { $_.Name -like 'ffmpeg*' } | Select-Object -First 1; [Environment]::SetEnvironmentVariable('Path', [Environment]::GetEnvironmentVariable('Path','User') + ';' + ($ffmpegDir.FullName + '\bin'), 'User'); Write-Host 'FFmpeg installed successfully! You can now use FFMPEG!'; Remove-Item 'C:\ffmpeg.zip'"
